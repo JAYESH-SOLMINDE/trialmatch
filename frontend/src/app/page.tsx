@@ -65,7 +65,7 @@ export default function Dashboard() {
     setChatInput("");
     setChatLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/api/v1/chat", {
+      const res = await fetch("https://rialmatch-backend.onrender.com/api/v1/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: newMessages }),
@@ -89,7 +89,7 @@ export default function Dashboard() {
         medications: form.medications.split(",").map(s => s.trim()).filter(Boolean),
         lab_values: {}, location: form.location || undefined,
       };
-      const res = await fetch("http://localhost:8000/api/v1/matching/match", {
+      const res = await fetch("https://rialmatch-backend.onrender.com/api/v1/matching/match", {
         method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error("Server error");
